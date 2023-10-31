@@ -11,6 +11,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv = require("dotenv");
 const node_fetch_1 = require("node-fetch");
+const getFrames_1 = require("./getFrames");
 dotenv.config();
 const getFigmaData = () => __awaiter(void 0, void 0, void 0, function* () {
     if (process.env.FIGMA_TOKEN_KEY) {
@@ -22,14 +23,14 @@ const getFigmaData = () => __awaiter(void 0, void 0, void 0, function* () {
             });
             if (res.ok) {
                 const documentData = yield res.json();
-                console.log(documentData);
+                (0, getFrames_1.getFrames)(documentData.document);
             }
             else {
-                console.error(`Erreur lors de la requête à Figma: ${res.status} - ${yield res.text()}`);
+                console.error(`An error has occured: ${res.status} - ${yield res.text()}`);
             }
         }
         catch (error) {
-            console.error(`Une erreur s'est produite : ${error}`);
+            console.error(`An error has occured: ${error}`);
         }
     }
     else {

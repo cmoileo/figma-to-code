@@ -1,7 +1,8 @@
-import * as dotenv from 'dotenv';
+import * as dotenv from "dotenv"
 import fetch from "node-fetch"
+import { getFrames } from "./getFrames"
 
-dotenv.config();
+dotenv.config()
 const getFigmaData = async () => {
     if (process.env.FIGMA_TOKEN_KEY) {
         try {
@@ -13,8 +14,7 @@ const getFigmaData = async () => {
 
             if (res.ok) {
                 const documentData = await res.json();
-                
-                console.log(documentData)
+                getFrames(documentData.document)
             } else {
                 console.error(`An error has occured: ${res.status} - ${await res.text()}`);
             }
