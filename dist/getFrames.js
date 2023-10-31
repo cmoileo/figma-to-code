@@ -10,11 +10,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getFrames = void 0;
+const fs = require("fs/promises");
 const getFrames = (documentData) => __awaiter(void 0, void 0, void 0, function* () {
     const pageId = Number(process.env.FRAMES_PAGE);
-    console.log(typeof pageId);
     if (process.env.FRAMES_PAGE && typeof pageId == "number") {
-        console.log(documentData.children[pageId]);
+        const frames = documentData.children[pageId].children;
+        frames.forEach((frame, i) => __awaiter(void 0, void 0, void 0, function* () {
+            console.log(frame.name);
+            const frameName = frame.name;
+            const phpCode = `<?php\n// Your PHP code for the frame: ${frameName}\n?>`;
+            const filePath = `./theme/templates/${frameName}.php`;
+            try {
+                yield fs.writeFile(filePath, phpCode, "utf-8");
+                console.log(`Created PHP file for frame: ${frameName}`);
+            }
+            catch (error) {
+                console.error(`Error creating PHP file for frame: ${frameName}`, error);
+            }
+        }));
     }
     else {
         console.log("Please provide a frame page ID");

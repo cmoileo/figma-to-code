@@ -2,6 +2,7 @@
 
 
 export interface Node {
+    children: any;
 	// A string uniquely identifying this node within the document.
 	id: string;
 	// The name given to the node by the user in the tool.
