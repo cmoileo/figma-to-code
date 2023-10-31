@@ -10,18 +10,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getFrames = void 0;
+const fileTemplate_1 = require("./fileTemplate");
 const fs = require("fs/promises");
 const getFrames = (documentData) => __awaiter(void 0, void 0, void 0, function* () {
     const pageId = Number(process.env.FRAMES_PAGE);
     if (process.env.FRAMES_PAGE && typeof pageId == "number") {
         const frames = documentData.children[pageId].children;
         frames.forEach((frame, i) => __awaiter(void 0, void 0, void 0, function* () {
-            console.log(frame.name);
             const frameName = frame.name;
-            const phpCode = `<?php\n// Your PHP code for the frame: ${frameName}\n?>`;
+            const template = (0, fileTemplate_1.default)(frame);
             const filePath = `./theme/templates/${frameName}.php`;
             try {
-                yield fs.writeFile(filePath, phpCode, "utf-8");
+                yield fs.writeFile(filePath, template, "utf-8");
                 console.log(`Created PHP file for frame: ${frameName}`);
             }
             catch (error) {
