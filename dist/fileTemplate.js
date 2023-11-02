@@ -1,6 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const getTag_1 = require("./getTag");
 function getFileTemplate(frame) {
+    function generateSection(section, index) {
+        return `<section class="section-${index}">\n${section.children.map(generateChild).join('\n')}</section>\n`;
+    }
+    function generateChild(child) {
+        const tag = (0, getTag_1.default)(child);
+        if (tag == null) {
+            return `<div class="${child.name}">\n${child.children.map(generateChild).join('\n')}</div>\n`;
+        }
+        else {
+            return `<${tag}>${child.characters}</${tag}>\n`;
+        }
+    }
     let template = `<?php
 /**
  * Template Name: ${frame.name}
@@ -8,43 +21,9 @@ function getFileTemplate(frame) {
 */
 ?>
 `;
-    frame.children.forEach((child, i) => {
+    frame.children.forEach((child, index) => {
         if (child.name === "section") {
-            template += `<section class="section-${i}">\n`;
-            child.children.forEach((greatChild) => {
-                let tag;
-                switch (greatChild.name) {
-                    case "h1":
-                        tag = "h1";
-                        break;
-                    case "h2":
-                        tag = "h2";
-                        break;
-                    case "h3":
-                        tag = "h3";
-                        break;
-                    case "h4":
-                        tag = "h4";
-                        break;
-                    case "h5":
-                        tag = "h5";
-                        break;
-                    case "p":
-                        tag = "p";
-                        break;
-                    default:
-                        tag = null;
-                }
-                if (tag == null) {
-                    template += `<div class="${greatChild.name}">\n`;
-                    template += `</div>\n`;
-                }
-                else {
-                    console.log(greatChild.characters);
-                    template += `<${tag}>${greatChild.name}</${tag}>\n`;
-                }
-            });
-            template += `</section>\n`;
+            template += generateSection(child, index);
         }
     });
     return template;
