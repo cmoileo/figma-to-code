@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv"
 import fetch from "node-fetch"
-import { getFrames } from "./getFrames"
+import { getFrames } from "./html/getFrames"
 
 dotenv.config()
 const getFigmaData = async () => {
