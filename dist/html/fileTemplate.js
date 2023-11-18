@@ -1,6 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const getTag_1 = require("./getTag");
+const app_1 = require("../app");
+function findNameByKey(keyToFind) {
+    for (const item of app_1.localStyles) {
+        if (item.key === keyToFind) {
+            return item.name;
+        }
+    }
+    return undefined;
+}
 function getFileTemplate(frame) {
     function generateSection(section, index) {
         return `<section class="section-${index}">\n${section.children.map(generateChild).join('\n')}</section>\n`;
@@ -11,7 +20,8 @@ function getFileTemplate(frame) {
             return `<div class="${child.name}">\n${child.children.map(generateChild).join('\n')}</div>\n`;
         }
         else {
-            return `<${tag}>${child.characters}</${tag}>\n`;
+            const className = typeof child.styles !== "undefined" ? findNameByKey(child.styles.text) : "";
+            return `<${tag} class="${className}">${child.characters}</${tag}>\n`;
         }
     }
     let template = `<?php

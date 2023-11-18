@@ -9,6 +9,28 @@ export interface FigmaRes {
 	styles: Style
 }
 
+export interface LocalStyle {
+    key: string;
+    name: string;
+}
+
+export interface Typography {
+    name: string
+    value: TypographyValue
+    variables: any
+}
+
+export interface TypographyValue {
+    fontSize: number,
+    fontFamily: string,
+    fontWeight: string,
+    lineHeight: string | number,
+    lineHeightUnit: string,
+    letterSpacing: string,
+    letterSpacingUnit: string,
+    textDecoration: string
+}
+
 export interface Style {
 	key: string
 	name: string
@@ -755,7 +777,7 @@ export type ConnectorTextBackground =  {
 	fills: Paint[];
 }
 
-export type StyleType = "FILL" | "TEXT" | "EFFECT" | "GRID";
+export type StyleType = "FILL" | "text" | "EFFECT" | "GRID";
 
 export type ConnectorMagnet = "AUTO" | "TOP" | "BOTTOM" | "LEFT" | "RIGHT";
 

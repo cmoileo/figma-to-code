@@ -1,34 +1,14 @@
 import * as fs from 'fs'
-interface LocalStyle {
-    key: string;
-    name: string;
-}
+import { LocalStyle, Typography } from '../types';
 
-interface Typography {
-    name: string
-    value: TypographyValue
-    variables: any
-}
-
-interface TypographyValue {
-    fontSize: number,
-    fontFamily: string,
-    fontWeight: string,
-    lineHeight: string | number,
-    lineHeightUnit: string,
-    letterSpacing: string,
-    letterSpacingUnit: string,
-    textDecoration: string
-}
-
-export default async function generateStyles(styles: Record<string, any>) {
-    const localStyles: LocalStyle[] = [];
+export default async function generateStyles(styles: Record<string, any>, localStyles: LocalStyle[]) {
 
     for (const key in styles) {
         const localStyle: LocalStyle = {
             key: key,
             name: styles[key].name,
         };
+        localStyles.push(localStyle)
     }
 
     fs.readFile("./src/style/variables.json", "utf8", (err, jsonString) => {

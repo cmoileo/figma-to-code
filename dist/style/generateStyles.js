@@ -10,14 +10,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require("fs");
-function generateStyles(styles) {
+function generateStyles(styles, localStyles) {
     return __awaiter(this, void 0, void 0, function* () {
-        const localStyles = [];
         for (const key in styles) {
             const localStyle = {
                 key: key,
                 name: styles[key].name,
             };
+            localStyles.push(localStyle);
         }
         fs.readFile("./src/style/variables.json", "utf8", (err, jsonString) => {
             if (err) {

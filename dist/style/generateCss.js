@@ -10,9 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const generateStyles_1 = require("./generateStyles");
-function generateCss(documentData) {
+function generateCss(documentData, localStyles) {
     return __awaiter(this, void 0, void 0, function* () {
-        (0, generateStyles_1.default)(documentData.styles);
+        (0, generateStyles_1.default)(documentData.styles, localStyles);
     });
 }
 exports.default = generateCss;
