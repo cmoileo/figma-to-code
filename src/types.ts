@@ -1,6 +1,43 @@
 // Types provided by https://github.com/lemmycaution/ 
 
 
+export interface FigmaRes {
+	document: Object
+	components: Object
+	componentSets: Object
+	schemaVersion: Object
+	styles: Style
+}
+
+export interface LocalStyle {
+    key: string;
+    name: string;
+}
+
+export interface Typography {
+    name: string
+    value: TypographyValue
+    variables: any
+}
+
+export interface TypographyValue {
+    fontSize: number,
+    fontFamily: string,
+    fontWeight: string,
+    lineHeight: string | number,
+    lineHeightUnit: string,
+    letterSpacing: string,
+    letterSpacingUnit: string,
+    textDecoration: string
+}
+
+export interface Style {
+	key: string
+	name: string
+	description: string
+	styleType: string
+	node_id: string
+}
 export interface Node {
     children: any;
 	// A string uniquely identifying this node within the document.
@@ -709,17 +746,6 @@ export type ComponentSet =  {
 	description: string;
 }
 
-export type Style =  {
-	// The key of the style
-	key: string;
-	// The name of the style
-	name: string;
-	// The description of the style
-	description: string;
-	// The type of style as string enum
-	style_type: StyleType;
-}
-
 export type ShapeType =  {
 	SQUARE: string;
 	ELLIPSE: string;
@@ -751,7 +777,7 @@ export type ConnectorTextBackground =  {
 	fills: Paint[];
 }
 
-export type StyleType = "FILL" | "TEXT" | "EFFECT" | "GRID";
+export type StyleType = "FILL" | "text" | "EFFECT" | "GRID";
 
 export type ConnectorMagnet = "AUTO" | "TOP" | "BOTTOM" | "LEFT" | "RIGHT";
 

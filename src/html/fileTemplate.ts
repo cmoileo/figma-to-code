@@ -1,5 +1,16 @@
-import { FrameNode, Node } from "figma-rest-api-types";
+import { FrameNode, Node, TextNode } from "../types";
 import getTag from './getTag';
+
+import { localStyles } from "../app";
+
+function findNameByKey(keyToFind: string): string | undefined {
+    for (const item of localStyles) {
+      if (item.key === keyToFind) {
+        return item.name;
+      }
+    }
+    return undefined;
+}
 
 export default function getFileTemplate(frame: FrameNode) {
     function generateSection(section: Node, index: number): string {
@@ -8,14 +19,15 @@ export default function getFileTemplate(frame: FrameNode) {
         }</section>\n`;
     }
 
-    function generateChild(child: Node): string {
+    function generateChild(child: TextNode): string {
         const tag = getTag(child);
         if (tag == null) {
             return `<div class="${child.name}">\n${
                 child.children.map(generateChild).join('\n')
             }</div>\n`;
         } else {
-            return `<${tag}>${child.characters}</${tag}>\n`;
+            const className = typeof child.styles !== "undefined" ? findNameByKey(child.styles.text) : ""
+            return `<${tag} class="${className}">${child.characters}</${tag}>\n`;
         }
     }
 
@@ -27,7 +39,7 @@ export default function getFileTemplate(frame: FrameNode) {
 ?>
 `;
 
-    frame.children.forEach((child, index) => {
+    frame.children.forEach((child: Node, index: number) => {
         if (child.name === "section") {
             template += generateSection(child, index);
         }
