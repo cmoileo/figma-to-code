@@ -1,6 +1,21 @@
 // Types provided by https://github.com/lemmycaution/ 
 
 
+export interface FigmaRes {
+	document: Object
+	components: Object
+	componentSets: Object
+	schemaVersion: Object
+	styles: Style
+}
+
+export interface Style {
+	key: string
+	name: string
+	description: string
+	styleType: string
+	node_id: string
+}
 export interface Node {
     children: any;
 	// A string uniquely identifying this node within the document.
@@ -707,17 +722,6 @@ export type ComponentSet =  {
 	name: string;
 	// The description of the component set as entered in the editor
 	description: string;
-}
-
-export type Style =  {
-	// The key of the style
-	key: string;
-	// The name of the style
-	name: string;
-	// The description of the style
-	description: string;
-	// The type of style as string enum
-	style_type: StyleType;
 }
 
 export type ShapeType =  {

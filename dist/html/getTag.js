@@ -1,30 +1,29 @@
-import  { Node }  from "../types";
-
-export default function getTag(greatChild: Node) : string | null {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+function getTag(greatChild) {
     let tag;
     switch (greatChild.name) {
         case "h1":
             tag = "h1";
-        break;
+            break;
         case "h2":
             tag = "h2";
-        break;
+            break;
         case "h3":
             tag = "h3";
-        break;
+            break;
         case "h4":
             tag = "h4";
-        break;
+            break;
         case "h5":
             tag = "h5";
-        break;
+            break;
         case "p":
             tag = "p";
-        break;
-                        
+            break;
         default:
             tag = null;
-        }
-    
-    return tag
+    }
+    return tag;
 }
+exports.default = getTag;

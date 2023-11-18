@@ -11,7 +11,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const dotenv = require("dotenv");
 const node_fetch_1 = require("node-fetch");
-const getFrames_1 = require("./getFrames");
+const getFrames_1 = require("./html/getFrames");
+const generateCss_1 = require("./style/generateCss");
 dotenv.config();
 const getFigmaData = () => __awaiter(void 0, void 0, void 0, function* () {
     if (process.env.FIGMA_TOKEN_KEY) {
@@ -24,6 +25,7 @@ const getFigmaData = () => __awaiter(void 0, void 0, void 0, function* () {
             if (res.ok) {
                 const documentData = yield res.json();
                 (0, getFrames_1.getFrames)(documentData.document);
+                (0, generateCss_1.default)(documentData);
             }
             else {
                 console.error(`An error has occured: ${res.status} - ${yield res.text()}`);

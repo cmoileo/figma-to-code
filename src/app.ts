@@ -1,6 +1,7 @@
 import * as dotenv from "dotenv"
 import fetch from "node-fetch"
 import { getFrames } from "./html/getFrames"
+import generateCss from "./style/generateCss"
 
 dotenv.config()
 const getFigmaData = async () => {
@@ -15,6 +16,7 @@ const getFigmaData = async () => {
             if (res.ok) {
                 const documentData = await res.json();
                 getFrames(documentData.document)
+                generateCss(documentData)
             } else {
                 console.error(`An error has occured: ${res.status} - ${await res.text()}`);
             }

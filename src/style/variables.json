@@ -1,0 +1,213 @@
+{
+  "version": "1.0.4",
+  "metadata": {},
+  "collections": [
+    {
+      "name": "Theme",
+      "modes": [
+        {
+          "name": "Mode 1",
+          "variables": [
+            {
+              "name": "Primary/main",
+              "type": "color",
+              "isAlias": false,
+              "value": "#5A90C2"
+            },
+            {
+              "name": "Primary/light",
+              "type": "color",
+              "isAlias": false,
+              "value": "#A5C2DE"
+            },
+            {
+              "name": "Primary/dark",
+              "type": "color",
+              "isAlias": false,
+              "value": "#315D86"
+            },
+            {
+              "name": "Primary/contrastText",
+              "type": "color",
+              "isAlias": false,
+              "value": "#FFFFFF"
+            },
+            {
+              "name": "radius/button",
+              "type": "number",
+              "isAlias": true,
+              "value": {
+                "collection": "Core",
+                "name": "md"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Mode 2",
+          "variables": [
+            {
+              "name": "Primary/main",
+              "type": "color",
+              "isAlias": false,
+              "value": "#5AC28C"
+            },
+            {
+              "name": "Primary/light",
+              "type": "color",
+              "isAlias": false,
+              "value": "#A5DEC1"
+            },
+            {
+              "name": "Primary/dark",
+              "type": "color",
+              "isAlias": false,
+              "value": "#31865A"
+            },
+            {
+              "name": "Primary/contrastText",
+              "type": "color",
+              "isAlias": false,
+              "value": "#FFFFFF"
+            },
+            {
+              "name": "radius/button",
+              "type": "number",
+              "isAlias": true,
+              "value": {
+                "collection": "Core",
+                "name": "md"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Core",
+      "modes": [
+        {
+          "name": "Mode 1",
+          "variables": [
+            {
+              "name": "xs",
+              "type": "number",
+              "isAlias": false,
+              "value": 6
+            },
+            {
+              "name": "sm",
+              "type": "number",
+              "isAlias": false,
+              "value": 8
+            },
+            {
+              "name": "md",
+              "type": "number",
+              "isAlias": false,
+              "value": 12
+            },
+            {
+              "name": "lg",
+              "type": "number",
+              "isAlias": false,
+              "value": 16
+            },
+            {
+              "name": "xl",
+              "type": "number",
+              "isAlias": false,
+              "value": 20
+            },
+            {
+              "name": "2xl",
+              "type": "number",
+              "isAlias": false,
+              "value": 24
+            },
+            {
+              "name": "full",
+              "type": "number",
+              "isAlias": false,
+              "value": 99999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Typography",
+      "modes": [
+        {
+          "name": "Style",
+          "variables": [
+            {
+              "name": "Text-1",
+              "type": "typography",
+              "isAlias": false,
+              "value": {
+                "fontSize": 12,
+                "fontFamily": "Inter",
+                "fontWeight": "Regular",
+                "lineHeight": "auto",
+                "lineHeightUnit": "AUTO",
+                "letterSpacing": 0,
+                "letterSpacingUnit": "PERCENT",
+                "textCase": "ORIGINAL",
+                "textDecoration": "NONE"
+              }
+            },
+            {
+              "name": "H3",
+              "type": "typography",
+              "isAlias": false,
+              "value": {
+                "fontSize": 18,
+                "fontFamily": "Josefin Sans",
+                "fontWeight": "Bold",
+                "lineHeight": "auto",
+                "lineHeightUnit": "AUTO",
+                "letterSpacing": 0,
+                "letterSpacingUnit": "PERCENT",
+                "textCase": "ORIGINAL",
+                "textDecoration": "NONE"
+              }
+            },
+            {
+              "name": "Subtitle",
+              "type": "typography",
+              "isAlias": false,
+              "value": {
+                "fontSize": 16,
+                "fontFamily": "Josefin Sans",
+                "fontWeight": "Regular",
+                "lineHeight": "auto",
+                "lineHeightUnit": "AUTO",
+                "letterSpacing": 0,
+                "letterSpacingUnit": "PERCENT",
+                "textCase": "ORIGINAL",
+                "textDecoration": "NONE"
+              }
+            },
+            {
+              "name": "button",
+              "type": "typography",
+              "isAlias": false,
+              "value": {
+                "fontSize": 14,
+                "fontFamily": "Josefin Sans",
+                "fontWeight": "Medium",
+                "lineHeight": "auto",
+                "lineHeightUnit": "AUTO",
+                "letterSpacing": 0,
+                "letterSpacingUnit": "PERCENT",
+                "textCase": "ORIGINAL",
+                "textDecoration": "NONE"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

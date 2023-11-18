@@ -1,4 +1,4 @@
-import { FrameNode, Node } from "figma-rest-api-types";
+import { FrameNode, Node, TextNode } from "../types";
 import getTag from './getTag';
 
 export default function getFileTemplate(frame: FrameNode) {
@@ -8,7 +8,7 @@ export default function getFileTemplate(frame: FrameNode) {
         }</section>\n`;
     }
 
-    function generateChild(child: Node): string {
+    function generateChild(child: TextNode): string {
         const tag = getTag(child);
         if (tag == null) {
             return `<div class="${child.name}">\n${
@@ -27,7 +27,7 @@ export default function getFileTemplate(frame: FrameNode) {
 ?>
 `;
 
-    frame.children.forEach((child, index) => {
+    frame.children.forEach((child: Node, index: number) => {
         if (child.name === "section") {
             template += generateSection(child, index);
         }

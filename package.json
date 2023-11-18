@@ -7,6 +7,7 @@
   "author": "cmoileo <106542483+cmoileo@users.noreply.github.com>",
   "license": "MIT",
   "dependencies": {
+    "@figma/plugin-typings": "^1.80.0",
     "dotenv": "^16.3.1",
     "figma-rest-api-types": "^1.1.6",
     "node-fetch": "2",

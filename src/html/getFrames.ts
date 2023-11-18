@@ -1,6 +1,6 @@
 import * as dotenv from "dotenv"
 import { DocumentNode } from "../types"
-import { FrameNode } from "figma-rest-api-types"
+import { FrameNode } from "../types"
 import getFileTemplate from "./fileTemplate"
 import * as fs from "fs/promises";
 
